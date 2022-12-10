@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //namespace name and undefined
+        (function (namespace, undefined){
+
+            //private properties
+            var foo = "foo",
+                bar = "bar";
+            
+            //public methods and properties
+            namespace.foobar = "foobar";
+            namespace.sayHello = function () {
+                speak ( "hello world");
+            };
+
+            //private method
+            function speak(msg) {
+                console.log( "You said: "+ msg);
+            };
+        } ( window.namespace = window.namespace || {}));
+
+        //outputs: foobar
+        console.log(namespace.foobar);
+
+        //outputs hello world
+        namespace.sayHello();
+
+        //new properties
+        namespace.foobar2="foobar";
+
+        //outputs foobar
+        console.log(namespace.foobar2);
+
+    </script>
+</body>
+</html>
